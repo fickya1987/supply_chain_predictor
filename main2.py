@@ -57,7 +57,7 @@ with st.form("my_form"):
         
         delay_result = (helper2.delay_prediction(X))
         if delay_result > 0:
-            col3.header(f'Your cargo might be delayed by {np.round(delay_result[0],0)} days.')
+            col3.header(f'Your cargo might be delayed by {np.round(delay_result,0)} days.')
         else:
             col3.header(f'Your cargo might reach early by {delay_result*(-1)} days.')
             
