@@ -17,15 +17,14 @@ The data used to develop the protoype is USAID medical supply data taken from [h
 ---
 
 ## Flowchart
-![Flow](https://user-images.githubusercontent.com/58810725/144334091-e0432b76-23bb-4ec1-ad84-90a7da118668.jpeg)
+![Flow2](https://user-images.githubusercontent.com/58810725/144334324-3c4f4b1e-1f29-42a2-ada3-5f159162d955.jpeg)
 
 ---
-
 
 
 1. Data Preparation
 2. Pipelines & Base Model
 3. Model Predicting Best Mode of Transporatation
 4. Model Predicting Freight Costs
-5. Model Predicting Posiible Delay 
+5. Model Predicting Possible Delay 
 6. Streamlit Deployment
