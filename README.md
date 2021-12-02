@@ -23,23 +23,27 @@ The data used to develop the protoype is USAID medical supply data taken from [h
 
 ## Process
 The app development process consists of the following 6 stages:
-1. [Data Preparation](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/data_preparation.ipynb) - The major challenge at the data preparation stage is filling the missing values in the data which are a plenty. Some highlights of the data are:\
-2 types Fulfill Via - From RDC(52%) and Direct Drop(48%)\
-INCO Terms - N/A for RDC, 7 Inco Terms used- mostly EXW(56%),DDP(29%),FCA(8%),CIP(5.5%)\
-4 Shipment modes - Air (59%), Truck (27%), Air Charter (6%), Ocean (3%), Nan (3%)\
-PQ First Sent Date - NA (24%)\
-PO Sent to Vendor Date - NA for RDC + Not captured (55%)\
-5 Product Group - ARV (83%), HRDT(17%), 3 negligible\
-6 Sub Class - Adult (64%), Pediatric (19%), HIV test(15%), HIV-Ancillary (2%), Malaria and ACT negligible\
-72 Non-RDC Vendors\
-48 Brands\
-17 Dosage Form\
-First Line Designation - Yes (68%), No(32%)\
-Weight - Not defined for 40% data\
-Freight Cost - Not clear for 41% data\
-Insurance NAN for 3%\ They were filled as per the following considerations: 
-2. [Pipelines & Base Model](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/preprocessing%26base_model.ipynb)
-3. [Model Predicting Best Mode of Transporatation](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/mode_model.ipynb)
-4. [Model Predicting Freight Costs](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/freight_model.ipynb)
-5. [Model Predicting Possible Delay](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/delay_model.ipynb)
-6. [Streamlit Deployment](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/main2.py)
+1. [Data Preparation](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/data_preparation.ipynb) - The major challenge at the data preparation stage is filling the missing values in the data which are a plenty. They were filled as per the following considerations:\
+-Shipment Mode - Drop rows\
+-Dosage - Filling by mode\
+-Line Item Insurance - Mean Percentage of Line Item Insurance/Line Item Value\
+-PQ date - Reverse calculation by subtracting average days from Schedule Delivery to First Price Quotation\
+-PO Date - Reverse calculation by subtracting average days from Schedule Delivery to Purchase Order\
+-Weights - where ID is mentioned. Taken same as mentioned ID. Remaining filled with mean\
+-Freight - 0 where included in Commodity Cost, where ID is mentioned. Taken same as mentioned ID. Remaining filled with mean\
+
+2. [Pipelines & Base Model](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/preprocessing%26base_model.ipynb) - The numerical and the categorical features were transformed using different pipelines and then a combined column transformer was applied. The basemodel is inspired from the model created here. It consists of an artificial neural network with 4 hidden layers. It solves a multiclass classification problem and predicts the best mode of transport for the cargo.
+
+3. [Model Predicting Best Mode of Transporatation](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/mode_model.ipynb) - The major improvement over the base model was using ADASYN or Adaptive Synthetic sampling algorithm to generate synthetic data, since the data for the means of transportation was biased towards Air shipments and it needed to be removed. It solves a multiclass classification problem and predicts the best mode of transport for the cargo.
+
+4. [Model Predicting Freight Costs](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/freight_model.ipynb) - The problem at hand was a regression problem to predict the freight cost. First a neural network with 5 hidden layers was used but the R2 score was not as per expectation. Then a hypertuned XGBRegressor model which gave much better R2 score was finalised for deployment. 
+
+5. [Model Predicting Possible Delay](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/delay_model.ipynb) - The problem at hand was a regression problem to predict the delay in number of days. Similar to the freight cost problem, first a neural network with 5 hidden layers was used but the R2 score was not as per expectation. Then a hypertuned XGBRegressor model which gave much better R2 score was finalised for deployment.
+
+6. [Deployment](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/main2.py) - Streamlit was used to deploy the three models on cloud. The apps take user data for 12 parameters and gives outputs based on the three different models developed above.
+
+---
+
+## Reference
+
+The base model is inspired from [this repository](https://github.com/MSadriAghdam/Supply-Chain-Prediction_Neural-Network-ML) created by Mohsen Sadri Aghdam.
