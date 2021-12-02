@@ -21,10 +21,24 @@ The data used to develop the protoype is USAID medical supply data taken from [h
 
 ---
 
-
-1. Data Preparation
-2. Pipelines & Base Model
-3. Model Predicting Best Mode of Transporatation
-4. Model Predicting Freight Costs
-5. Model Predicting Possible Delay 
-6. Streamlit Deployment
+## Process
+The app development process consists of the following 6 stages:
+1. [Data Preparation](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/data_preparation.ipynb) - The major challenge at the data preparation stage is filling the missing values in the data which are a plenty. Some highlights of the data are: __ 2 types Fulfill Via - From RDC(52%) and Direct Drop(48%)__
+INCO Terms - N/A for RDC, 7 Inco Terms used- mostly EXW(56%),DDP(29%),FCA(8%),CIP(5.5%)__
+4 Shipment modes - Air (59%), Truck (27%), Air Charter (6%), Ocean (3%), Nan (3%)__
+PQ First Sent Date - NA (24%)__
+PO Sent to Vendor Date - NA for RDC + Not captured (55%)__
+5 Product Group - ARV (83%), HRDT(17%), 3 negligible__
+6 Sub Class - Adult (64%), Pediatric (19%), HIV test(15%), HIV-Ancillary (2%), Malaria and ACT negligible__
+72 Non-RDC Vendors__
+48 Brands__
+17 Dosage Form__
+First Line Designation - Yes (68%), No(32%)__
+Weight - Not defined for 40% data__
+Freight Cost - Not clear for 41% data__
+Insurance NAN for 3%__ They were filled as per the following considerations: 
+2. [Pipelines & Base Model](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/preprocessing%26base_model.ipynb)
+3. [Model Predicting Best Mode of Transporatation](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/mode_model.ipynb)
+4. [Model Predicting Freight Costs](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/freight_model.ipynb)
+5. [Model Predicting Possible Delay](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/delay_model.ipynb)
+6. [Streamlit Deployment](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/main2.py)
