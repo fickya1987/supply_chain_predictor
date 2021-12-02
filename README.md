@@ -32,7 +32,7 @@ The app development process consists of the following 6 stages:
 -Weights - where ID is mentioned. Taken same as mentioned ID. Remaining filled with mean\
 -Freight - 0 where included in Commodity Cost, where ID is mentioned. Taken same as mentioned ID. Remaining filled with mean\
 
-2. [Pipelines & Base Model](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/preprocessing%26base_model.ipynb) - The numerical and the categorical features were transformed using different pipelines and then a combined column transformer was applied. The basemodel is inspired from the model created here. It consists of an artificial neural network with 4 hidden layers. It solves a multiclass classification problem and predicts the best mode of transport for the cargo.
+2. [Pipelines & Base Model](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/preprocessing%26base_model.ipynb) - The numerical and the categorical features were transformed using different pipelines and then a combined column transformer was applied. The basemodel is inspired from reference given below. It consists of an artificial neural network with 4 hidden layers. It solves a multiclass classification problem and predicts the best mode of transport for the cargo.
 
 3. [Model Predicting Best Mode of Transporatation](https://github.com/vishalpuri13/supply_chain_predictor/blob/main/mode_model.ipynb) - The major improvement over the base model was using ADASYN or Adaptive Synthetic sampling algorithm to generate synthetic data, since the data for the means of transportation was biased towards Air shipments and it needed to be removed. It solves a multiclass classification problem and predicts the best mode of transport for the cargo.
 
