@@ -12,7 +12,15 @@ Supply Chain is a vast domain and includes multiple stages from procurement of r
 
 ## Data For Prototype
 
-The data used to develop the protoype is USAID medical supply data taken from [here](https://data.usaid.gov/HIV-AIDS/Supply-Chain-Shipment-Pricing-Data/a3rc-nmf6). It contains 10300 shipments to 43 countries through 73 vendors supplied from 88 manufacturing sites. It contains quote-delivery timelines, product descriptions including  weights & prices and delivery costs.
+The data used to develop the protoype is USAID medical supply data taken from [here](https://data.usaid.gov/HIV-AIDS/Supply-Chain-Shipment-Pricing-Data/a3rc-nmf6). It contains 10300 shipments to 43 countries through 73 vendors supplied from 88 manufacturing sites. It contains timelines for stages from quotation to delivery, product descriptions including  weights & prices and delivery costs.
+
+---
+
+## Flowchart
+![Flow](https://user-images.githubusercontent.com/58810725/144334091-e0432b76-23bb-4ec1-ad84-90a7da118668.jpeg)
+
+---
+
 
 
 1. Data Preparation
