@@ -1,5 +1,6 @@
 # Supply Chain Predictor
 ## [Logistics Planner App](https://share.streamlit.io/vishalpuri13/supply_chain_predictor/main/main2.py)
+![Capture](https://user-images.githubusercontent.com/58810725/144333680-8bc1f0c3-db01-4288-99c6-07dd24f0cf55.JPG)
 
 ---
 
@@ -11,7 +12,7 @@ Supply Chain is a vast domain and includes multiple stages from procurement of r
 
 ## Data For Prototype
 
-The data used to develop the protoype is USAID medical supply data taken from [here](https://data.usaid.gov/HIV-AIDS/Supply-Chain-Shipment-Pricing-Data/a3rc-nmf6). It contains 10300 shipments to 43 countries through 73 vendors supplied from 88 manufacturing sites. It contains quote-delivery timelines, product descriptions including  weights & prices and delivery costs ![image](https://user-images.githubusercontent.com/58810725/144333560-7d741885-3d03-4081-80bd-db8f4ad07c98.png)
+The data used to develop the protoype is USAID medical supply data taken from [here](https://data.usaid.gov/HIV-AIDS/Supply-Chain-Shipment-Pricing-Data/a3rc-nmf6). It contains 10300 shipments to 43 countries through 73 vendors supplied from 88 manufacturing sites. It contains quote-delivery timelines, product descriptions including  weights & prices and delivery costs.
 
 
 1. Data Preparation
