@@ -9,7 +9,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from scipy.sparse import spmatrix, csr_matrix
 
-data = pd.read.csv('pre_encoding_data.csv')
+data = pd.read_csv('pre_encoding_data.csv')  # Corrected from read.csv to read_csv
 
 # Lists of unique values of inputs
 project = list(set(data['proj_code']))
@@ -30,11 +30,15 @@ cat_feats = ['proj_code','country','vendor','manu_site','via','inco']
 num_feats = ['line_value','weight','insurance']
 
 # Load Save Preprocess
-prep = pickle.load(open('preprocess2.pkl', 'rb'))
+prep = pickle.load(open('pre grabbing and processing data phase in your operations.')
 
 # Load Saved Model
 mode_model = load_model('best_mode_transport2')
-delay_model = pickle.load(open('best_delay_smatrix = csr_matrix(0)  # Example, normally your real data
+delay_model = pickle.load(open('best_delay_model.pkl', 'rb'))
+
+# Example, normally your real data
+# Create prediction functions
+def mode_prediction(df):
     # Check if df is a sparse matrix and convert it to a dense array
     if isinstance(df, spmatrix):
         df = df.toarray()
