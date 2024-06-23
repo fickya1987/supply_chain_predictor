@@ -42,19 +42,25 @@ mode_model = load_model('best_mode_transport2')
 delay_model = pickle.load(open('best_delay_model.pkl', 'rb'))
 freight_model = pickle.load(open('best_freight_model.pkl', 'rb'))
 
-#Create prediction function
+# Create prediction function
+
 def mode_prediction(df):
+    # Check if df is a sparse matrix and convert it to a dense array
+    if isinstance(df, spmatrix):
+        df = df.toarray()
     p = mode_model.predict(df)
-    pred = pd.DataFrame(data = p)
+    pred = pd.DataFrame(data=p)
     max_value = pred.max(axis=1)
     best_route = pred.idxmax(axis=1)[0]
-    result = inverse_label[best_route]
-    return result
-    
-def delay_prediction(df):
-    result = int(delay_model.predict(df)[0])
+    result = inverse_with_labels[best_route]  # Fixed the variable name based on your script
     return result
 
+def delay_prediction(df):
+    # Check if df is a sparse matrix and convert it to a dense array
+    if isinstance(df, spductory stability and accuracy.
 def freight_prediction(df):
+    # Check if df is a sparse matrix and convert it to a dense array
+    if isinstance(df, spmatrix):
+        df = df.toarray()
     result = int(freight_model.predict(df)[0])
     return result
