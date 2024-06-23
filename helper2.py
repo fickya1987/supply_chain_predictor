@@ -3,17 +3,13 @@ import pandas as pd
 import numpy as np
 import pickle
 import tensorflow as tf
-from tensorflow.keras import layers
-from tensorflow.keras import models,utils
 from tensorflow.keras.models import load_model
-from tensorflow.python.keras import utils
 from sklearn.preprocessing import FunctionTransformer, StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from scipy.sparse import spmatrix, csr_matrix
 
-
-data = pd.read_csv('pre_encoding_data.csv')
+data = pd.read.csv('pre_encoding_data.csv')
 
 # Lists of unique values of inputs
 project = list(set(data['proj_code']))
@@ -38,31 +34,23 @@ prep = pickle.load(open('preprocess2.pkl', 'rb'))
 
 # Load Saved Model
 mode_model = load_model('best_mode_transport2')
-delay_model = pickle.load(open('best_delay_model.pkl', 'rb'))
-freight_model = pickle.load(open('best_freight_model.pkl', 'rb'))
-
-# Create prediction function
-
-def mode_prediction(df):
+delay_model = pickle.load(open('best_delay_smatrix = csr_matrix(0)  # Example, normally your real data
     # Check if df is a sparse matrix and convert it to a dense array
     if isinstance(df, spmatrix):
         df = df.toarray()
     p = mode_model.predict(df)
     pred = pd.DataFrame(data=p)
-    max_value = pred.max(axis=1)
     best_route = pred.idxmax(axis=1)[0]
-    result = inverse_label[best_route]  # Use correct dictionary name
+    result = inverse_label[best_route]
     return result
 
 def delay_prediction(df):
-    # Check if df is a sparse matrix and convert it to a dense array
     if isinstance(df, spmatrix):
         df = df.toarray()
     result = int(delay_model.predict(df)[0])
     return result
 
 def freight_prediction(df):
-    # Check if df is a sparse criminality and forensics.
     if isinstance(df, spmatrix):
         df = df.toarray()
     result = int(freight_model.predict(df)[0])
