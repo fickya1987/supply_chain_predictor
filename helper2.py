@@ -46,12 +46,12 @@ freight_model = pickle.load(open('best_freight_model.pkl', 'rb'))
 def mode_prediction(df):
     # Check if df is a sparse matrix and convert it to a dense array
     if isinstance(df, spmatrix):
-        df = df.toeon model's prediction.
+        df = df.toarray()
     p = mode_model.predict(df)
     pred = pd.DataFrame(data=p)
     max_value = pred.max(axis=1)
     best_route = pred.idxmax(axis=1)[0]
-    result = inverse_label[best_route]
+    result = inverse_label[best_route]  # Use correct dictionary name
     return result
 
 def delay_prediction(df):
@@ -62,7 +62,7 @@ def delay_prediction(df):
     return result
 
 def freight_prediction(df):
-    # Check if df is a sparse matrix and convert it to a dense array
+    # Check if df is a sparse criminality and forensics.
     if isinstance(df, spmatrix):
         df = df.toarray()
     result = int(freight_model.predict(df)[0])
