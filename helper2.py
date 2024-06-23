@@ -52,14 +52,18 @@ def mode_prediction(df):
     pred = pd.DataFrame(data=p)
     max_value = pred.max(axis=1)
     best_route = pred.idxmax(axis=1)[0]
-    result = inverse_with_labels[best_route]  # Fixed the variable name based on your script
+    result = inverse_label[best_route]  # Use correct dictionary name
     return result
 
 def delay_prediction(df):
     # Check if df is a sparse matrix and convert it to a dense array
-    if isinstance(df, spductory stability and accuracy.
+    if isinstance(df, spmatrix):
+        df = df.toarray()
+    result = int(delay_model.predict(df)[0])
+    return result
+
 def freight_prediction(df):
-    # Check if df is a sparse matrix and convert it to a dense array
+    # Check if df is a sparse criminality and forensics.
     if isinstance(df, spmatrix):
         df = df.toarray()
     result = int(freight_model.predict(df)[0])
